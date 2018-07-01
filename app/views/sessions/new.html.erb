@@ -1,0 +1,13 @@
+<h1>ログイン</h1>
+    <%= form_for(:session, url: login_path) do |f| %>
+    <%= content_tag(:div, flash[:user_id_error], :id => "flash_error") if flash[:user_id_error] %>
+    <%= content_tag(:div, flash[:password_error], :id => "flash_error") if flash[:password_error] %>
+    <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+      <%= f.label :user_id, "ユーザID"%>
+      <%= f.text_field :user_id %>
+      
+      <%= f.label :password, "パスワード"%>
+      <%= f.password_field :password %>
+
+      <%= f.submit "ログインする" %>
+    <% end %>
