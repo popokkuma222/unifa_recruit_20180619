@@ -1,6 +1,10 @@
 class PhotoController < ApplicationController
   def list
-    @photos = Photo.where(created_by: session[:id]).order('created_at DESC')
+    if logged_in?
+      @photos = Photo.where(created_by: session[:id]).order('created_at DESC')
+    else
+      redirect_to root_url
+    end
   end
 
   def new
