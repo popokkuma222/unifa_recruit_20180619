@@ -1,9 +1,16 @@
 <h1>Photo List</h1>
 <%= link_to "写真アップロード", photo_new_path %>
+<% if session[:access_token].present? %>
+  MyTweetAppと連携中
+<% else%>
+  <%= link_to "MyTweetAppと連携", tweet_auth_path %>
+<% end %>
 <% if @photos.present? %>
   <% @photos.each do |p| %>
     <%= p.title %>
-    <%= image_tag '/photos/' + p.id.to_s + p.extention  %>
+    <%= image_tag '/photos/' + p.get_file_name  %>
+    <%= link_to "ツイートする", :controller => :photo, :action => :tweet, :id => p.id %>
   <% end %>
 <% end %>
+<%= link_to "ログアウト", logout_path, method: "delete" %>
 
