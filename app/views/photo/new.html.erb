@@ -1,0 +1,19 @@
+<h1>写真アップロード</h1>
+<% if @photo.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @photo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for(@photo, url: photo_new_path) do |f| %>
+    <%= f.label :title, "タイトル"%>
+    <%= f.text_field :title %>
+    <%= f.label :title, "画像アップロード"%>
+    <%= f.file_field :image %>
+    <%= f.submit "アップロード" %>
+  <% end %>
+<%= link_to "キャンセル", photo_path %>
+

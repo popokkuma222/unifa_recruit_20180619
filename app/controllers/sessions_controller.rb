@@ -23,6 +23,7 @@ class SessionsController < ApplicationController
       if user && user.authenticate(params[:session][:password])
         # ユーザーログイン後にユーザー情報のページにリダイレクトする
         log_in user
+	session[:id] = user.id
         redirect_to controller: 'photo', action: 'list'
       else
         # エラーメッセージを作成する
