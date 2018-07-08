@@ -10,4 +10,8 @@ class Photo < ApplicationRecord
       File.open(output_path, 'wb'){|f| f.write file.read}
     end
   end
+
+  def get_file_name
+    return self.id.to_s + self.extention
+  end
 end
