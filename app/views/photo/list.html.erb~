@@ -1,0 +1,11 @@
+<h1>Photo List</h1>
+<%= link_to "写真アップロード", photo_new_path %>
+<% if @photos.present? %>
+	photo exist
+  <% @photos.each do |p| %>
+    test<%= p.title %>
+  <% end %>
+  <%else%>
+	not photo exist  
+<% end %>
+
